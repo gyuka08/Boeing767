@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://bhv8ukimumc83"]
+
+[ext_resource type="Texture2D" uid="uid://d1spslomjyidr" path="res://Sprite/spr_boeing767.png" id="1_luais"]
+[ext_resource type="Script" path="res://Logic/log_boeing.gd" id="1_nrv4a"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n3bg4"]
+radius = 45.0
+height = 708.0
+
+[node name="Boeing" type="CharacterBody2D"]
+z_index = 10
+script = ExtResource("1_nrv4a")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-122, 102)
+texture = ExtResource("1_luais")
+offset = Vector2(73, -90)
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 89)
+rotation = 1.5708
+scale = Vector2(1.12, 1)
+shape = SubResource("CapsuleShape2D_n3bg4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://ckpag3pqlnhb4"]
+
+[ext_resource type="Texture2D" uid="uid://bxgjx85wd06l3" path="res://Sprite/spr_arabroof.jpg" id="1_ileu5"]
+[ext_resource type="Script" path="res://Logic/log_wall.gd" id="1_qucwh"]
+[ext_resource type="Texture2D" uid="uid://b5gvu4seu2ufu" path="res://Sprite/spr_arabfloor.jpg" id="2_u25dl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tlayp"]
+size = Vector2(18.8032, 23.5924)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ljcxr"]
+size = Vector2(126.224, 106)
+
+[node name="Wall" type="Node2D"]
+light_mask = 2
+visibility_layer = 2
+z_index = 2
+script = ExtResource("1_qucwh")
+
+[node name="Roof" type="Area2D" parent="."]
+visibility_layer = 2
+position = Vector2(290, -34)
+scale = Vector2(0.404391, 0.404391)
+
+[node name="Sprite2D" type="Sprite2D" parent="Roof"]
+light_mask = 2
+visibility_layer = 2
+position = Vector2(170.627, 279.433)
+texture = ExtResource("1_ileu5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Roof"]
+position = Vector2(169.391, 280.669)
+scale = Vector2(95.6096, -16.6657)
+shape = SubResource("RectangleShape2D_tlayp")
+
+[node name="Floor" type="Area2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Floor"]
+light_mask = 2
+visibility_layer = 2
+position = Vector2(360, 1248)
+scale = Vector2(0.402735, 0.524899)
+texture = ExtResource("2_u25dl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(361, 1248)
+scale = Vector2(5.72, 1.00267)
+shape = SubResource("RectangleShape2D_ljcxr")
+
+[connection signal="body_entered" from="Roof" to="." method="_on_roof_body_entered"]
+[connection signal="body_entered" from="Floor" to="." method="_on_floor_body_entered"]

@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://dw4upyml18k64"]
+
+[ext_resource type="Texture2D" uid="uid://b2nyr4sostjhl" path="res://Sprite/spr_newyork.png" id="1_h78sn"]
+[ext_resource type="PackedScene" uid="uid://bhv8ukimumc83" path="res://Scene/Entity/scn_boeing.tscn" id="2_51ri1"]
+[ext_resource type="PackedScene" uid="uid://ckpag3pqlnhb4" path="res://Scene/Entity/scn_ground.tscn" id="3_x0jfu"]
+[ext_resource type="PackedScene" uid="uid://dgu3er3fokugw" path="res://Scene/Entity/scn_building_spawner.tscn" id="4_pur7b"]
+
+[sub_resource type="Theme" id="Theme_omx10"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_x0m5p"]
+
+[node name="NewYork" type="Node2D"]
+
+[node name="Boeing" parent="." instance=ExtResource("2_51ri1")]
+top_level = true
+z_index = 10
+z_as_relative = false
+position = Vector2(358, 652)
+scale = Vector2(0.2, 0.2)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 264.0
+offset_top = 88.0
+offset_right = 441.0
+offset_bottom = 183.0
+theme = SubResource("Theme_omx10")
+text = "Score
+"
+
+[node name="Sky" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(358, 558)
+scale = Vector2(1.53889, 1.53889)
+texture = SubResource("CompressedTexture2D_x0m5p")
+
+[node name="Background" type="Sprite2D" parent="."]
+modulate = Color(0.647059, 0.741176, 0.862745, 1)
+light_mask = 8
+visibility_layer = 8
+z_as_relative = false
+position = Vector2(366, 952)
+texture = ExtResource("1_h78sn")
+
+[node name="Wall" parent="." instance=ExtResource("3_x0jfu")]
+position = Vector2(-1, -2)
+
+[node name="BuildingSpawner" parent="." instance=ExtResource("4_pur7b")]
+building_speed = 150
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0

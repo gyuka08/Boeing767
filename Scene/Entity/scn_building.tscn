@@ -1,0 +1,56 @@
+[gd_scene load_steps=6 format=3 uid="uid://dabghj8msewtr"]
+
+[ext_resource type="Texture2D" uid="uid://cswm4b4wqiptk" path="res://Sprite/spr_building.png" id="1_4krp6"]
+[ext_resource type="Script" path="res://Logic/log_building.gd" id="1_r3jjc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3pn3l"]
+size = Vector2(104, 604)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q6t18"]
+size = Vector2(103, 606)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kethw"]
+size = Vector2(19.0442, 383.402)
+
+[node name="Building" type="Node2D"]
+visibility_layer = 4
+z_index = 1
+script = ExtResource("1_r3jjc")
+
+[node name="Bottom" type="Area2D" parent="."]
+position = Vector2(0, 400)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Bottom"]
+light_mask = 4
+visibility_layer = 4
+texture = ExtResource("1_4krp6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom"]
+position = Vector2(0, 53)
+shape = SubResource("RectangleShape2D_3pn3l")
+
+[node name="Top" type="Area2D" parent="."]
+position = Vector2(0, -400)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Top"]
+light_mask = 4
+visibility_layer = 4
+texture = ExtResource("1_4krp6")
+flip_v = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Top"]
+position = Vector2(-0.5, -52)
+shape = SubResource("RectangleShape2D_q6t18")
+
+[node name="Clear" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Clear"]
+position = Vector2(154, 3)
+scale = Vector2(2.54308, 0.725087)
+shape = SubResource("RectangleShape2D_kethw")
+
+[connection signal="body_entered" from="Bottom" to="." method="_on_body_entered"]
+[connection signal="body_entered" from="Top" to="." method="_on_body_entered"]
+[connection signal="body_entered" from="Clear" to="." method="_on_point_scored"]

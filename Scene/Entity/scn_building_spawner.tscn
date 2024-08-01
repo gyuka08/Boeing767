@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgu3er3fokugw"]
+
+[ext_resource type="Script" path="res://Logic/log_building_spawner.gd" id="1_rhq01"]
+
+[node name="BuildingSpawner" type="Node2D"]
+script = ExtResource("1_rhq01")
+building_speed = null
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
